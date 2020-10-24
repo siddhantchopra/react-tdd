@@ -7,6 +7,7 @@ export const NewRestaurantForm = (props) => {
     const handleSave = () => {
         props.onSave(text)
     }
+
     return (
         <div>
             <input type="text" data-test="newRestaurantName" onChange={(e) => setText(e.target.value)} value={text} />

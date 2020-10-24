@@ -4,16 +4,21 @@ import { RestaurantList } from './RestaurantList'
 
 export const RestaurantListPage = () => {
     const [restaurant, setRestaurant] = useState([])
+    const [showRestaurantForm, setShowRestaurantform] = useState(false)
 
     const handleAddRestaurant=(newRestaurantName)=>{
         setRestaurant([...restaurant, newRestaurantName])
+        setShowRestaurantform(false)
     }
     return (
         <div>
-            <button data-test="addRestaurantButton">
+            <button data-test="addRestaurantButton" onClick={()=> setShowRestaurantform(true)}>
                 Add Restaurant
             </button>
-            <NewRestaurantForm onSave={handleAddRestaurant}/>
+            {
+                showRestaurantForm ?    <NewRestaurantForm onSave={handleAddRestaurant}/>: null
+            }
+        
             <RestaurantList restaurant={restaurant}/>
         </div>
     )
