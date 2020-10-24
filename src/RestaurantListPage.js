@@ -1,26 +1,33 @@
 import React, { useState } from 'react'
+import { Button, Col, Row } from 'react-materialize'
 import { NewRestaurantForm } from './NewRestaurantForm'
 import { RestaurantList } from './RestaurantList'
-import {Button} from 'react-materialize'
 
 export const RestaurantListPage = () => {
     const [restaurant, setRestaurant] = useState([])
     const [showRestaurantForm, setShowRestaurantform] = useState(false)
 
-    const handleAddRestaurant=(newRestaurantName)=>{
+    const handleAddRestaurant = (newRestaurantName) => {
         setRestaurant([...restaurant, newRestaurantName])
         setShowRestaurantform(false)
     }
     return (
         <div>
-            <Button data-test="addRestaurantButton" onClick={()=> setShowRestaurantform(true)}>
-                Add Restaurant
+            <Row>
+                <Button data-test="addRestaurantButton" onClick={() => setShowRestaurantform(true)}>
+                    Add Restaurant
             </Button>
-            {
-                showRestaurantForm ?    <NewRestaurantForm onSave={handleAddRestaurant}/>: null
-            }
-        
-            <RestaurantList restaurant={restaurant}/>
+            </Row>
+            <Row>
+
+                {
+                    showRestaurantForm ? <NewRestaurantForm onSave={handleAddRestaurant} /> : null
+                }
+            </Row>
+            <Row>
+
+                <RestaurantList restaurant={restaurant} />
+            </Row>
         </div>
     )
 }
