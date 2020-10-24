@@ -1,6 +1,5 @@
 import React from 'react'
 import {mount} from 'enzyme'
-
 import {NewRestaurantForm} from '../../src/NewRestaurantForm'
 
 describe('New Restaurant Form',()=>{
@@ -10,9 +9,9 @@ describe('New Restaurant Form',()=>{
 
            const wrapper =  mount(<NewRestaurantForm onSave={saveHandler}/>)
 
-           wrapper.find('[data-test="newRestaurantName"]').simulate('change', {target: {value: 'Suchi Place'}})
+           wrapper.find('input[data-test="newRestaurantName"]').simulate('change', {target: {value: 'Suchi Place'}})
 
-           wrapper.find('[data-test="saveNewRestaurantButton"]').simulate('click')
+           wrapper.find('button[data-test="saveNewRestaurantButton"]').simulate('click')
 
            expect(saveHandler).toHaveBeenCalledWith('Suchi Place')
         })
